@@ -23,14 +23,14 @@ Antes de empezar con las consultas, primero debemos crear una nueva base de dato
 
 Dentro podremos crear una nueva para este proyecto:
 
-![Creación de la base de datos]()
+![Creación de la base de datos](Images/01.png)
 
 > [!WARNING]
 > Es importante recordar activar los datos "Demo" para no encontrarnos con la base de datos completamente vacía y sin tablas que podamos manejar.
 
 Una vez creada correctamente la base de datos, debemos iniciar sesión dentro del Odoo y instalar en esta base de datos los módulos de contactos y facturación.
 
-![Instalación de los módulos]()
+![Instalación de los módulos](Images/02.png)
 
 Una vez terminado estos pasos, podemos proceder a pgadmin y realizar las consultas necesarias
 
@@ -45,11 +45,11 @@ El primer apartado va a tratar la creación de una tabla llamada "EmpresasFCT", 
 
 Para ello, primero debemos iniciar sesión en nuestro PgAdmin y acceder a la base de datos que hemos creado anteriormente
 
-![Base de datos abierta]()
+![Base de datos abierta](Images/03.png)
 
 Ahora si le damos click derecho a la propia base de datos podremos acceder a la consola de SQL, donde podremos introducir diferentes comandos para realizar diferentes cosas
 
-![Consola de SQL]()
+![Consola de SQL](Images/04.png)
 
 Para crear la tabla y los datos que se nos piden, debemos introducir la siguiente consulta de SQL:
 
@@ -67,7 +67,7 @@ Esto creará la tabla y sus respectivos datos, y le daremos un límite de 40 car
 
 Ahora comprobaremos la creación de la tabla y sus datos en el panel izquierdo:
 
-![Comprobación de la tabla]()
+![Comprobación de la tabla](Images/05.png)
 
 # 2. Inserción de los primeros datos
 Este segundo apartado va a tratar la inserción de datos en la tabla que hemos creado reciente mente, para ello introducimos el siguiente SQL de igual manera que en apartado anterior:
@@ -89,7 +89,7 @@ SELECT * FROM public.empresasfct
 ORDER BY idempresa ASC
 ```
 
-![Comprobación de los datos introducidos]()
+![Comprobación de los datos introducidos](Images/06.png)
 
 # 3. Impresión de las diferentes empresas
 En este apartado imprimiremos las diferentes empresas ordenadas por fecha contacto, de modo que la primera empresa que se muestre tenga la fecha más reciente, para ello utilizaremos la siguiente consulta:
@@ -101,7 +101,7 @@ ORDER BY fechaContacto DESC;
 
 Dando el siguiente resultado:
 
-![Comprobación de las empresas]()
+![Comprobación de las empresas](Images/07.png)
 
 # 4. Impresión de los diferentes contactos
 En este apartado imprimiremos los diferentes contactos registrados mostrando su nombre, la empresa comercial y deben de estar filtrados por su ciudad, siendo esta "Tracy", además deben ordenarse alfabéticamente, para ello utilizaremos la siguiente consulta:
@@ -119,7 +119,7 @@ ORDER BY
 
 Dando el siguiente resultado:
 
-![Resultado de la impresión]()
+![Resultado de la impresión](Images/08.png)
 
 # 5. Impresión de los diferentes proveedores
 En este apartado vamos a tratar la impresión de aquellos proveedores que han emitido un rembolso, se debe mostrar el nombre de la empresa, el número de factura, la fecha de la factura, y el total sin impuestos, para ello utilizamos la siguiente consulta:
@@ -143,7 +143,7 @@ ORDER BY
 
 El resultado debe ser el siguiente:
 
-![Resultado de los proveedores]()
+![Resultado de los proveedores](Images/09.png)
 
 # 6. Impresión de los diferentes datos filtrados
 Este apartado va a tratar el filtrado de datos a la hora de imprimirlos, para ellos mostraremos un listado de empresas que sean clientes y tengan más de dos facturas de venta confirmadas, mostrando su nombre, número de facturas, y el total sin impuestos
@@ -170,7 +170,7 @@ HAVING
 
 Dando el resultado:
 
-![Resultado de empresas]()
+![Resultado de empresas](Images/10.png)
 
 # 7. Actualización de los datos
 Este apartado va a tratar la actualización de un dato ya creado, pasando de "@bilbao.example.com" a "@bilbao.bizkaia.neus", usando la consulta
@@ -191,16 +191,16 @@ WHERE email LIKE '%@bilbao.bizkaia.neus';
 
 Dando el resultado:
 
-![Resultado de la actualización]()
+![Resultado de la actualización](Images/11.png)
 
 # 8. Eliminación de diferentes datos
-Este apartado va a tratar la eliminación de diferentes datos pertenecientes a la empresa "Ready Mat"
+Este apartado va a tratar la eliminación de diferentes datos pertenecientes a la empresa "Ready Mat" y a sus empleados
 
-Primero, vamos a comprobar que exista dentro de Odoo:
+Primero, vamos a comprobar que existan dentro de Odoo:
 
-![Comprobación de Ready Mat]()
+![Comprobación de Ready Mat](Images/12.png)
 
-Ahora vamos a eliminar todos sus datos con la siguiente consulta:
+Ahora vamos a eliminar todos sus empleads con la siguiente consulta:
 
 ```SQL
 DELETE FROM res_partner
@@ -217,10 +217,10 @@ WHERE parent_id = (SELECT id FROM res_partner WHERE name = 'Ready Mat');
 
 Dando este resultado:
 
-![Comprobación eliminación de los datos]()
+![Comprobación eliminación de los datos](Images/13.png)
 
 Finalmente comprobamos dentro de Odoo:
 
-![Comprobación eliminación Odoo]()
+![Comprobación eliminación Odoo](Images/14.png)
 
 Ahora ya no tendrá empleados que se muestren ni en la base de datos ni en el propio Odoo
